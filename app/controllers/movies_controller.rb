@@ -38,6 +38,6 @@ class MoviesController < ApplicationController
   private
 
   def movie_params
-    params.permit(:title, :summary, :youtube_embed_id, :thumbnail)
+    params.require(:movie).permit(:title, :summary, :youtube_embed_id, :thumbnail)
   end
 end
