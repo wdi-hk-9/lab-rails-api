@@ -1,0 +1,498 @@
+  [1m[36m (1.3ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (1.2ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateMovies (20150427192226)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.8ms)[0m  CREATE TABLE "movies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" text, "summary" text, "youtube_embed_id" text, "thumbnail" text, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150427192226"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+Migrating to CreateActors (20150427192240)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "actors" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" text, "year_of_birth" integer, "thumbnail" text, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150427192240"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+Migrating to CreateUsers (20150427192250)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "first_name" text, "last_name" text, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150427192250"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+Migrating to CreateReviews (20150427192303)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "reviews" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "body" text, "user_id" integer, "movie_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150427192303"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+Migrating to CreateActorsMovies (20150427192437)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "actors_movies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "actor_id" integer, "movie_id" integer) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150427192437"]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("created_at", "first_name", "last_name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2015-11-09 18:36:00.890359"], ["first_name", "Brooks"], ["last_name", "Swinnerton"], ["updated_at", "2015-11-09 18:36:00.890359"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "users" ("created_at", "first_name", "last_name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2015-11-09 18:36:00.894805"], ["first_name", "Otto"], ["last_name", "Swinnerton"], ["updated_at", "2015-11-09 18:36:00.894805"]]
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "users" ("created_at", "first_name", "last_name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2015-11-09 18:36:00.895726"], ["first_name", "Luna"], ["last_name", "Swinnerton"], ["updated_at", "2015-11-09 18:36:00.895726"]]
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "actors" ("created_at", "name", "thumbnail", "updated_at", "year_of_birth") VALUES (?, ?, ?, ?, ?)  [["created_at", "2015-11-09 18:36:00.910312"], ["name", "Ralph Fiennes"], ["thumbnail", "ralph_fiennes.jpg"], ["updated_at", "2015-11-09 18:36:00.910312"], ["year_of_birth", 1962]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "actors" ("created_at", "name", "thumbnail", "updated_at", "year_of_birth") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2015-11-09 18:36:00.911713"], ["name", "Jeff Goldblum"], ["thumbnail", "jeff_goldblum.jpg"], ["updated_at", "2015-11-09 18:36:00.911713"], ["year_of_birth", 1952]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "actors" ("created_at", "name", "thumbnail", "updated_at", "year_of_birth") VALUES (?, ?, ?, ?, ?)  [["created_at", "2015-11-09 18:36:00.913132"], ["name", "Will Ferrell"], ["thumbnail", "will_ferrel.jpg"], ["updated_at", "2015-11-09 18:36:00.913132"], ["year_of_birth", 1967]]
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "actors" ("created_at", "name", "thumbnail", "updated_at", "year_of_birth") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2015-11-09 18:36:00.914599"], ["name", "Chris Kattan"], ["thumbnail", "chris_kattan.jpg"], ["updated_at", "2015-11-09 18:36:00.914599"], ["year_of_birth", 1970]]
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "actors" ("created_at", "name", "thumbnail", "updated_at", "year_of_birth") VALUES (?, ?, ?, ?, ?)  [["created_at", "2015-11-09 18:36:00.915375"], ["name", "Zach Braff"], ["thumbnail", "zach_braff.jpg"], ["updated_at", "2015-11-09 18:36:00.915375"], ["year_of_birth", 1975]]
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "actors" ("created_at", "name", "thumbnail", "updated_at", "year_of_birth") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2015-11-09 18:36:00.916020"], ["name", "Kate Hudson"], ["thumbnail", "kate_hudson.jpg"], ["updated_at", "2015-11-09 18:36:00.916020"], ["year_of_birth", 1979]]
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "movies" ("created_at", "summary", "thumbnail", "title", "updated_at", "youtube_embed_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", "2015-11-09 18:36:00.958370"], ["summary", "The adventures of Gustave H, a legendary concierge at a famous hotel from the fictional Republic of Zubrowka between the first and second World Wars, and Zero Moustafa, the lobby boy who becomes his most trusted friend."], ["thumbnail", "the_grand_budapest_hotel.jpg"], ["title", "The Grand Budapest Hotel"], ["updated_at", "2015-11-09 18:36:00.958370"], ["youtube_embed_id", "1Fg5iWmQjwk"]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "actors_movies" ("actor_id", "movie_id") VALUES (?, ?)[0m  [["actor_id", 1], ["movie_id", 1]]
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "actors_movies" ("actor_id", "movie_id") VALUES (?, ?)  [["actor_id", 2], ["movie_id", 1]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "movies" ("created_at", "summary", "thumbnail", "title", "updated_at", "youtube_embed_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", "2015-11-09 18:36:00.963396"], ["summary", "Aidan Bloom is a 35-year-old man who finds himself at major crossroads, which forces him to examine his life, his career, and his family."], ["thumbnail", "wish_i_was_here.jpg"], ["title", "Wish I was Here"], ["updated_at", "2015-11-09 18:36:00.963396"], ["youtube_embed_id", "aCponfeWNOI"]]
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "actors_movies" ("actor_id", "movie_id") VALUES (?, ?)  [["actor_id", 5], ["movie_id", 2]]
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "actors_movies" ("actor_id", "movie_id") VALUES (?, ?)[0m  [["actor_id", 6], ["movie_id", 2]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "movies" ("created_at", "summary", "thumbnail", "title", "updated_at", "youtube_embed_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", "2015-11-09 18:36:00.967136"], ["summary", "Two dim-witted brothers dream of owning their own dance club or at least getting into the coolest and most exclusive club in town, The Roxbury."], ["thumbnail", "a_night_at_the_roxbury.jpg"], ["title", "A Night at the Roxbury"], ["updated_at", "2015-11-09 18:36:00.967136"], ["youtube_embed_id", "Xvl3qJe9L9g"]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "actors_movies" ("actor_id", "movie_id") VALUES (?, ?)[0m  [["actor_id", 3], ["movie_id", 3]]
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "actors_movies" ("actor_id", "movie_id") VALUES (?, ?)  [["actor_id", 4], ["movie_id", 3]]
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "reviews" ("body", "created_at", "movie_id", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["body", "It has often been said that Wes Anderson walks the fine line between folly and genius. In the \"Grand Budapest Hotel\", however, this distinction no longer exists: the ridiculous becomes brilliant, and brilliant has never been this ridiculous."], ["created_at", "2015-11-09 18:36:00.978209"], ["movie_id", 1], ["updated_at", "2015-11-09 18:36:00.978209"], ["user_id", 1]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "reviews" ("body", "created_at", "movie_id", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["body", "I for for one really enjoyed this movie. I saw it at a screening in Toronto. If you were a fan of Garden State you will love this movie. "], ["created_at", "2015-11-09 18:36:00.980060"], ["movie_id", 2], ["updated_at", "2015-11-09 18:36:00.980060"], ["user_id", 2]]
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "reviews" ("body", "created_at", "movie_id", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["body", "Emilioooooh!"], ["created_at", "2015-11-09 18:36:00.981572"], ["movie_id", 3], ["updated_at", "2015-11-09 18:36:00.981572"], ["user_id", 3]]
+  [1m[35m (1.1ms)[0m  commit transaction
+
+
+Started DELETE "/actors/1" for 127.0.0.1 at 2015-11-10 02:36:15 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ActorsController#destroy as */*
+  Parameters: {"id"=>"1"}
+Can't verify CSRF token authenticity
+  [1m[35mActor Load (0.3ms)[0m  SELECT  "actors".* FROM "actors"  WHERE "actors"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  DELETE FROM "actors_movies" WHERE "actors_movies"."actor_id" = ?  [["actor_id", 1]]
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "actors" WHERE "actors"."id" = ?[0m  [["id", 1]]
+  [1m[35m (1.0ms)[0m  commit transaction
+Completed 204 No Content in 62ms (ActiveRecord: 2.5ms)
+
+
+Started GET "/actors/2" for 127.0.0.1 at 2015-11-10 02:36:32 +0800
+Processing by ActorsController#show as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mActor Load (0.2ms)[0m  [1mSELECT  "actors".* FROM "actors"  WHERE "actors"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mMovie Load (0.3ms)[0m  SELECT "movies".* FROM "movies" INNER JOIN "actors_movies" ON "movies"."id" = "actors_movies"."movie_id" WHERE "actors_movies"."actor_id" = ?  [["actor_id", 2]]
+  Rendered actors/show.html.erb within layouts/application (28.7ms)
+Completed 500 Internal Server Error in 2339ms
+
+ActionView::Template::Error (undefined local variable or method `new_movie_path' for #<#<Class:0x007f90760c87b8>:0x007f90760dbd18>):
+    27:         <ul class="nav navbar-nav">
+    28:           <li class="active"><%= link_to 'Home', root_path %></li>
+    29:           <li><%= link_to 'Movies', movies_path %></li>
+    30:           <li><%= link_to 'Create Movie', new_movie_path %></li>
+    31:           <li><%= link_to 'Create Actor', new_actor_path %></li>
+    32:       </div><!--/.nav-collapse -->
+    33:     </div><!--/.container-fluid -->
+  app/views/layouts/application.html.erb:30:in `_app_views_layouts_application_html_erb___2664912247498775446_70129209398560'
+
+
+  Rendered /Users/chark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.8ms)
+  Rendered /Users/chark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /Users/chark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (70.3ms)
+
+
+Started GET "/api/actors" for 127.0.0.1 at 2015-11-10 02:36:43 +0800
+
+LoadError (Unable to autoload constant Api::ActorsController, expected /Users/chark/WDI-9-chark/labs/Rails-API-hw/lab-rails-api/app/controllers/api/actors_controller.rb to define it):
+  activesupport (4.1.6) lib/active_support/dependencies.rb:481:in `load_missing_constant'
+  activesupport (4.1.6) lib/active_support/dependencies.rb:180:in `const_missing'
+  activesupport (4.1.6) lib/active_support/inflector/methods.rb:253:in `const_get'
+  activesupport (4.1.6) lib/active_support/inflector/methods.rb:253:in `block in constantize'
+  activesupport (4.1.6) lib/active_support/inflector/methods.rb:236:in `each'
+  activesupport (4.1.6) lib/active_support/inflector/methods.rb:236:in `inject'
+  activesupport (4.1.6) lib/active_support/inflector/methods.rb:236:in `constantize'
+  activesupport (4.1.6) lib/active_support/dependencies.rb:552:in `get'
+  activesupport (4.1.6) lib/active_support/dependencies.rb:583:in `constantize'
+  actionpack (4.1.6) lib/action_dispatch/routing/route_set.rb:78:in `controller_reference'
+  actionpack (4.1.6) lib/action_dispatch/routing/route_set.rb:68:in `controller'
+  actionpack (4.1.6) lib/action_dispatch/routing/route_set.rb:46:in `call'
+  actionpack (4.1.6) lib/action_dispatch/journey/router.rb:73:in `block in call'
+  actionpack (4.1.6) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.1.6) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.1.6) lib/action_dispatch/routing/route_set.rb:678:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/flash.rb:254:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.1.6) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.6) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.6) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.6) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.6) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.6) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.6) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.6) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.6) lib/rails/engine.rb:514:in `call'
+  railties (4.1.6) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/chark/.rbenv/versions/2.2.3/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/chark/.rbenv/versions/2.2.3/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/chark/.rbenv/versions/2.2.3/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/chark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.0ms)
+  Rendered /Users/chark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendered /Users/chark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.7ms)
+  Rendered /Users/chark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (82.2ms)
+
+
+Started GET "/actors" for 127.0.0.1 at 2015-11-10 02:37:07 +0800
+Processing by ActorsController#index as */*
+Completed 500 Internal Server Error in 35ms
+
+ActionView::MissingTemplate (Missing template actors/index, application/index with {:locale=>[:en], :formats=>[:html, :text, :js, :css, :ics, :csv, :vcf, :png, :jpeg, :gif, :bmp, :tiff, :mpeg, :xml, :rss, :atom, :yaml, :multipart_form, :url_encoded_form, :json, :pdf, :zip], :variants=>[], :handlers=>[:erb, :builder, :raw, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/Users/chark/WDI-9-chark/labs/Rails-API-hw/lab-rails-api/app/views"
+):
+  actionview (4.1.6) lib/action_view/path_set.rb:46:in `find'
+  actionview (4.1.6) lib/action_view/lookup_context.rb:124:in `find'
+  actionview (4.1.6) lib/action_view/renderer/abstract_renderer.rb:18:in `find_template'
+  actionview (4.1.6) lib/action_view/renderer/template_renderer.rb:41:in `determine_template'
+  actionview (4.1.6) lib/action_view/renderer/template_renderer.rb:8:in `render'
+  actionview (4.1.6) lib/action_view/renderer/renderer.rb:42:in `render_template'
+  actionview (4.1.6) lib/action_view/renderer/renderer.rb:23:in `render'
+  actionview (4.1.6) lib/action_view/rendering.rb:99:in `_render_template'
+  actionpack (4.1.6) lib/action_controller/metal/streaming.rb:217:in `_render_template'
+  actionview (4.1.6) lib/action_view/rendering.rb:82:in `render_to_body'
+  actionpack (4.1.6) lib/action_controller/metal/rendering.rb:32:in `render_to_body'
+  actionpack (4.1.6) lib/action_controller/metal/renderers.rb:32:in `render_to_body'
+  actionpack (4.1.6) lib/abstract_controller/rendering.rb:25:in `render'
+  actionpack (4.1.6) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.1.6) lib/action_controller/metal/instrumentation.rb:41:in `block (2 levels) in render'
+  activesupport (4.1.6) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /Users/chark/.rbenv/versions/2.2.3/lib/ruby/2.2.0/benchmark.rb:303:in `realtime'
+  activesupport (4.1.6) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.1.6) lib/action_controller/metal/instrumentation.rb:41:in `block in render'
+  actionpack (4.1.6) lib/action_controller/metal/instrumentation.rb:84:in `cleanup_view_runtime'
+  activerecord (4.1.6) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.1.6) lib/action_controller/metal/instrumentation.rb:40:in `render'
+  actionpack (4.1.6) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (4.1.6) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (4.1.6) lib/abstract_controller/base.rb:189:in `process_action'
+  actionpack (4.1.6) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.1.6) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.1.6) lib/active_support/callbacks.rb:113:in `call'
+  activesupport (4.1.6) lib/active_support/callbacks.rb:113:in `call'
+  activesupport (4.1.6) lib/active_support/callbacks.rb:229:in `block in halting'
+  activesupport (4.1.6) lib/active_support/callbacks.rb:229:in `call'
+  activesupport (4.1.6) lib/active_support/callbacks.rb:229:in `block in halting'
+  activesupport (4.1.6) lib/active_support/callbacks.rb:166:in `call'
+  activesupport (4.1.6) lib/active_support/callbacks.rb:166:in `block in halting'
+  activesupport (4.1.6) lib/active_support/callbacks.rb:166:in `call'
+  activesupport (4.1.6) lib/active_support/callbacks.rb:166:in `block in halting'
+  activesupport (4.1.6) lib/active_support/callbacks.rb:166:in `call'
+  activesupport (4.1.6) lib/active_support/callbacks.rb:166:in `block in halting'
+  activesupport (4.1.6) lib/active_support/callbacks.rb:86:in `call'
+  activesupport (4.1.6) lib/active_support/callbacks.rb:86:in `run_callbacks'
+  actionpack (4.1.6) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.1.6) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.1.6) lib/action_controller/metal/instrumentation.rb:31:in `block in process_action'
+  activesupport (4.1.6) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.1.6) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.1.6) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.1.6) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.1.6) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.1.6) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.1.6) lib/abstract_controller/base.rb:136:in `process'
+  actionview (4.1.6) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.1.6) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.1.6) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.1.6) lib/action_controller/metal.rb:232:in `block in action'
+  actionpack (4.1.6) lib/action_dispatch/routing/route_set.rb:82:in `call'
+  actionpack (4.1.6) lib/action_dispatch/routing/route_set.rb:82:in `dispatch'
+  actionpack (4.1.6) lib/action_dispatch/routing/route_set.rb:50:in `call'
+  actionpack (4.1.6) lib/action_dispatch/journey/router.rb:73:in `block in call'
+  actionpack (4.1.6) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.1.6) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.1.6) lib/action_dispatch/routing/route_set.rb:678:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/flash.rb:254:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.1.6) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.6) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.6) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.6) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.6) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.6) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.6) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.6) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.6) lib/rails/engine.rb:514:in `call'
+  railties (4.1.6) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/chark/.rbenv/versions/2.2.3/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/chark/.rbenv/versions/2.2.3/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/chark/.rbenv/versions/2.2.3/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/chark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/missing_template.html.erb within rescues/layout (1.1ms)
+
+
+Started GET "/api/actors" for 127.0.0.1 at 2015-11-10 02:39:09 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+LoadError (Unable to autoload constant Api::ActorsController, expected /Users/chark/WDI-9-chark/labs/Rails-API-hw/lab-rails-api/app/controllers/api/actors_controller.rb to define it):
+  activesupport (4.1.6) lib/active_support/dependencies.rb:481:in `load_missing_constant'
+  activesupport (4.1.6) lib/active_support/dependencies.rb:180:in `const_missing'
+  activesupport (4.1.6) lib/active_support/inflector/methods.rb:240:in `const_get'
+  activesupport (4.1.6) lib/active_support/inflector/methods.rb:240:in `block in constantize'
+  activesupport (4.1.6) lib/active_support/inflector/methods.rb:236:in `each'
+  activesupport (4.1.6) lib/active_support/inflector/methods.rb:236:in `inject'
+  activesupport (4.1.6) lib/active_support/inflector/methods.rb:236:in `constantize'
+  activesupport (4.1.6) lib/active_support/dependencies.rb:552:in `get'
+  activesupport (4.1.6) lib/active_support/dependencies.rb:583:in `constantize'
+  actionpack (4.1.6) lib/action_dispatch/routing/route_set.rb:78:in `controller_reference'
+  actionpack (4.1.6) lib/action_dispatch/routing/route_set.rb:68:in `controller'
+  actionpack (4.1.6) lib/action_dispatch/routing/route_set.rb:46:in `call'
+  actionpack (4.1.6) lib/action_dispatch/journey/router.rb:73:in `block in call'
+  actionpack (4.1.6) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.1.6) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.1.6) lib/action_dispatch/routing/route_set.rb:678:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/flash.rb:254:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.1.6) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.6) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.6) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.6) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.6) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.6) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.6) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.6) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.6) lib/rails/engine.rb:514:in `call'
+  railties (4.1.6) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/chark/.rbenv/versions/2.2.3/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/chark/.rbenv/versions/2.2.3/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/chark/.rbenv/versions/2.2.3/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/chark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered /Users/chark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendered /Users/chark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (10.6ms)
+  Rendered /Users/chark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (79.8ms)
+
+
+Started GET "/api/actors" for 127.0.0.1 at 2015-11-10 02:39:39 +0800
+
+RuntimeError (Circular dependency detected while autoloading constant Api::ActorsController):
+  activesupport (4.1.6) lib/active_support/dependencies.rb:478:in `load_missing_constant'
+  activesupport (4.1.6) lib/active_support/dependencies.rb:180:in `const_missing'
+  activesupport (4.1.6) lib/active_support/inflector/methods.rb:240:in `const_get'
+  activesupport (4.1.6) lib/active_support/inflector/methods.rb:240:in `block in constantize'
+  activesupport (4.1.6) lib/active_support/inflector/methods.rb:236:in `each'
+  activesupport (4.1.6) lib/active_support/inflector/methods.rb:236:in `inject'
+  activesupport (4.1.6) lib/active_support/inflector/methods.rb:236:in `constantize'
+  activesupport (4.1.6) lib/active_support/dependencies.rb:552:in `get'
+  activesupport (4.1.6) lib/active_support/dependencies.rb:583:in `constantize'
+  actionpack (4.1.6) lib/action_dispatch/routing/route_set.rb:78:in `controller_reference'
+  actionpack (4.1.6) lib/action_dispatch/routing/route_set.rb:68:in `controller'
+  actionpack (4.1.6) lib/action_dispatch/routing/route_set.rb:46:in `call'
+  actionpack (4.1.6) lib/action_dispatch/journey/router.rb:73:in `block in call'
+  actionpack (4.1.6) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.1.6) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.1.6) lib/action_dispatch/routing/route_set.rb:678:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/flash.rb:254:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.1.6) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.6) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.6) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.6) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.6) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.6) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.6) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.6) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.6) lib/rails/engine.rb:514:in `call'
+  railties (4.1.6) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/chark/.rbenv/versions/2.2.3/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/chark/.rbenv/versions/2.2.3/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/chark/.rbenv/versions/2.2.3/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/chark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.1ms)
+  Rendered /Users/chark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.2ms)
+  Rendered /Users/chark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /Users/chark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (75.6ms)
+
+
+Started GET "/api/actors" for 127.0.0.1 at 2015-11-10 02:39:41 +0800
+
+RuntimeError (Circular dependency detected while autoloading constant Api::ActorsController):
+  activesupport (4.1.6) lib/active_support/dependencies.rb:478:in `load_missing_constant'
+  activesupport (4.1.6) lib/active_support/dependencies.rb:180:in `const_missing'
+  activesupport (4.1.6) lib/active_support/inflector/methods.rb:240:in `const_get'
+  activesupport (4.1.6) lib/active_support/inflector/methods.rb:240:in `block in constantize'
+  activesupport (4.1.6) lib/active_support/inflector/methods.rb:236:in `each'
+  activesupport (4.1.6) lib/active_support/inflector/methods.rb:236:in `inject'
+  activesupport (4.1.6) lib/active_support/inflector/methods.rb:236:in `constantize'
+  activesupport (4.1.6) lib/active_support/dependencies.rb:552:in `get'
+  activesupport (4.1.6) lib/active_support/dependencies.rb:583:in `constantize'
+  actionpack (4.1.6) lib/action_dispatch/routing/route_set.rb:78:in `controller_reference'
+  actionpack (4.1.6) lib/action_dispatch/routing/route_set.rb:68:in `controller'
+  actionpack (4.1.6) lib/action_dispatch/routing/route_set.rb:46:in `call'
+  actionpack (4.1.6) lib/action_dispatch/journey/router.rb:73:in `block in call'
+  actionpack (4.1.6) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.1.6) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.1.6) lib/action_dispatch/routing/route_set.rb:678:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/flash.rb:254:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.1.6) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.1.6) lib/active_record/connection_adapters/abstract/connection_pool.rb:621:in `call'
+  activerecord (4.1.6) lib/active_record/migration.rb:380:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.6) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.6) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.6) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.6) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.6) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.6) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.6) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.6) lib/rails/engine.rb:514:in `call'
+  railties (4.1.6) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/chark/.rbenv/versions/2.2.3/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/chark/.rbenv/versions/2.2.3/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/chark/.rbenv/versions/2.2.3/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/chark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered /Users/chark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendered /Users/chark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.9ms)
+  Rendered /Users/chark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (85.2ms)
+
+
+Started GET "/api/actors" for 127.0.0.1 at 2015-11-10 02:39:53 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by API::ActorsController#index as JSON
+  [1m[35mActor Load (0.4ms)[0m  SELECT "actors".* FROM "actors"
+Completed 200 OK in 28ms (Views: 5.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/actors/1" for 127.0.0.1 at 2015-11-10 02:39:56 +0800
+Processing by API::ActorsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mActor Load (0.2ms)[0m  [1mSELECT  "actors".* FROM "actors"  WHERE "actors"."id" = ? LIMIT 1[0m  [["id", 1]]
+Completed 404 Not Found in 3ms
+
+ActiveRecord::RecordNotFound (Couldn't find Actor with 'id'=1):
+  app/controllers/api/actors_controller.rb:9:in `show'
+
+
+  Rendered /Users/chark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.7ms)
+  Rendered /Users/chark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendered /Users/chark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/chark/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.1.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (79.3ms)
+
+
+Started GET "/api/actors/2" for 127.0.0.1 at 2015-11-10 02:40:00 +0800
+Processing by API::ActorsController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[35mActor Load (0.2ms)[0m  SELECT  "actors".* FROM "actors"  WHERE "actors"."id" = ? LIMIT 1  [["id", 2]]
+Completed 200 OK in 3ms (Views: 0.8ms | ActiveRecord: 0.2ms)
