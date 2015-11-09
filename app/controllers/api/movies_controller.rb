@@ -27,9 +27,9 @@ module API
       end
     end
 
-    def destory
+    def destroy
       movie = Movie.find(params[:id])
-      if movie.destory
+      if movie.destroy
         head 204
       else
         render json: movie.errors, status: 403
@@ -38,7 +38,7 @@ module API
 
     private
       def movie_params
-        params.require(:movies).permit(:title, :summary, :youtube_embed_id, :thumbnail)
+        params.require(:movie).permit(:title, :summary, :youtube_embed_id, :thumbnail)
       end
 
   end
