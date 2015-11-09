@@ -1,4 +1,5 @@
 class MoviesController < ApplicationController
+  protect_from_forgery with: :null_session
   def index
     @movies = Movie.all
   end
@@ -32,6 +33,13 @@ class MoviesController < ApplicationController
       redirect_to @movie
     else
       render :edit
+    end
+  end
+
+  def destroy
+    @movie = Movie.find(params[:id])
+    if @movie.destroy
+      head 204
     end
   end
 

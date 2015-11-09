@@ -1,4 +1,9 @@
 class ActorsController < ApplicationController
+  protect_from_forgery with: :null_session
+  def index
+    @actor = Actor.all
+  end
+
   def show
     @actor = Actor.find(params[:id])
   end
@@ -28,6 +33,13 @@ class ActorsController < ApplicationController
       redirect_to @actor
     else
       render :edit
+    end
+  end
+
+  def destroy
+    @actor = Actor.find(params[:id])
+    if @actor.destroy
+      head 204
     end
   end
 
