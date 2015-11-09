@@ -121,7 +121,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   pry-rails
-  rails (= 4.1.6)
+  rails
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
   spring
